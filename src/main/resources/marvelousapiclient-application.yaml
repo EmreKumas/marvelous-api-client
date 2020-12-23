@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: marvelous-api-client
+
+---
+
+spring:
+  profiles: dev, stage
+
+feign:
+  client:
+    config:
+      randomjokeapi:
+        connect-timeout: 2000
+        read-timeout: 4000
+
+randomjokeapi:
+  url: https://official-joke-api.appspot.com/random_joke
+
+---
+
+spring:
+  profiles: prod
+
+feign:
+  client:
+    config:
+      randomjokeapi:
+        connect-timeout: 1000
+        read-timeout: 2000
+
+randomjokeapi:
+  url: https://official-joke-api.appspot.com/random_joke
